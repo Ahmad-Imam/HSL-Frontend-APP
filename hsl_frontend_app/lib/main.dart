@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hsl_frontend_app/scroll_controller.dart';
+import 'package:hsl_frontend_app/journey_scroll_controller.dart';
+import 'package:hsl_frontend_app/station_scroll_controller.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ScrollScreen(),
+          builder: (context) => JourneyScrollScreen(),
         ));
   }
 
@@ -54,7 +55,17 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(),
+      body: Center(
+        child: TextButton(
+            child: Text('ok'),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => StationScrollScreen(),
+                  ));
+            }),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: buttonPress,
         tooltip: 'Increment',
