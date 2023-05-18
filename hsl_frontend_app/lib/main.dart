@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hsl_frontend_app/scroll_controller.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,7 +40,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void buttonPress() {}
+  void buttonPress() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ScrollScreen(),
+        ));
+  }
 
   @override
   Widget build(BuildContext context) {
