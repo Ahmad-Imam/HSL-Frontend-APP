@@ -59,11 +59,54 @@ class _JourneyScrollScreenState extends State<JourneyScrollScreen> {
     }
   }
 
+  bool scrollTop = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('API Scroll Demo'),
+        title: Text('Journey List'),
+        centerTitle: true,
+        actions: [
+          TextButton(
+            child: Row(
+              children: [
+                scrollTop
+                    ? const Text(
+                        "Start ",
+                        style: TextStyle(color: Colors.white),
+                      )
+                    : const Text(
+                        "End ",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                scrollTop
+                    ? const Icon(
+                        Icons.arrow_circle_up,
+                        color: Colors.white,
+                      )
+                    : const Icon(
+                        Icons.arrow_circle_down,
+                        color: Colors.white,
+                      ),
+              ],
+            ),
+            onPressed: () {
+              if (scrollTop) {
+                _scrollController.jumpTo(0);
+                setState(() {
+                  scrollTop = false;
+                });
+              } else {
+                setState(() {
+                  scrollTop = true;
+                });
+
+                _scrollController
+                    .jumpTo(_scrollController.position.maxScrollExtent);
+              }
+            },
+          )
+        ],
       ),
       body: Column(
         children: [

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hsl_frontend_app/add_journey.dart';
+import 'package:hsl_frontend_app/add_station.dart';
 import 'package:hsl_frontend_app/journey_scroll_controller.dart';
 import 'package:hsl_frontend_app/station_scroll_controller.dart';
 import 'package:http/http.dart' as http;
@@ -77,15 +79,47 @@ class _MyHomePageState extends State<MyHomePage> {
       body: loading
           ? CircularProgressIndicator()
           : Center(
-              child: TextButton(
-                  child: Text('ok'),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => StationScrollScreen(),
-                        ));
-                  }),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                      child: Text('View Journeys'),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => JourneyScrollScreen(),
+                            ));
+                      }),
+                  ElevatedButton(
+                      child: Text('View Stations'),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => StationScrollScreen(),
+                            ));
+                      }),
+                  ElevatedButton(
+                      child: Text('Create Journey'),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AddJourney(),
+                            ));
+                      }),
+                  ElevatedButton(
+                      child: Text('Create Station'),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AddStation(),
+                            ));
+                      }),
+                ],
+              ),
             ),
       floatingActionButton: FloatingActionButton(
         onPressed: buttonPress,

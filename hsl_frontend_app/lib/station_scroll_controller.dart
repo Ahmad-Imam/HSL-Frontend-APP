@@ -19,7 +19,6 @@ class _StationScrollScreenState extends State<StationScrollScreen> {
   @override
   void initState() {
     super.initState();
-    _scrollController.addListener(_scrollListener);
     _loadData();
   }
 
@@ -27,13 +26,6 @@ class _StationScrollScreenState extends State<StationScrollScreen> {
   void dispose() {
     _scrollController.dispose();
     super.dispose();
-  }
-
-  void _scrollListener() {
-    if (_scrollController.position.pixels ==
-        _scrollController.position.maxScrollExtent) {
-      _loadData();
-    }
   }
 
   Future<void> _loadData() async {
@@ -60,12 +52,54 @@ class _StationScrollScreenState extends State<StationScrollScreen> {
     }
   }
 
+  bool scrollTop = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('All Station List'),
         centerTitle: true,
+        actions: [
+          TextButton(
+            child: Row(
+              children: [
+                scrollTop
+                    ? const Text(
+                        "Start ",
+                        style: TextStyle(color: Colors.white),
+                      )
+                    : const Text(
+                        "End ",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                scrollTop
+                    ? const Icon(
+                        Icons.arrow_circle_up,
+                        color: Colors.white,
+                      )
+                    : const Icon(
+                        Icons.arrow_circle_down,
+                        color: Colors.white,
+                      ),
+              ],
+            ),
+            onPressed: () {
+              if (scrollTop) {
+                _scrollController.jumpTo(0);
+                setState(() {
+                  scrollTop = false;
+                });
+              } else {
+                setState(() {
+                  scrollTop = true;
+                });
+
+                _scrollController
+                    .jumpTo(_scrollController.position.maxScrollExtent);
+              }
+            },
+          )
+        ],
       ),
       body: Column(
         children: [
@@ -93,75 +127,71 @@ class _StationScrollScreenState extends State<StationScrollScreen> {
           Expanded(
             child: ListView.builder(
               controller: _scrollController,
-              itemCount: _items.length + 1,
+              itemCount: _items.length,
               shrinkWrap: true,
               clipBehavior: Clip.antiAlias,
               itemBuilder: (context, index) {
-                if (index < _items.length) {
-                  return Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          print('ok');
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => StationSingleView(
-                                  station: _items[index],
-                                ),
-                              ));
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Flexible(
-                                child: Container(
-                              width: 60,
-                              child: Text(
-                                _items[index].Name,
-                                textAlign: TextAlign.left,
-                                overflow: TextOverflow.ellipsis,
+                return Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        print('ok');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => StationSingleView(
+                                station: _items[index],
                               ),
-                            )),
-                            Flexible(
-                                child: Container(
-                              width: 60,
-                              child: Text(
-                                _items[index].Adress,
-                                textAlign: TextAlign.end,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            )),
-                            Flexible(
-                                child: Text(
-                              _items[index].Kapasiteet,
+                            ));
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Flexible(
+                              child: Container(
+                            width: 60,
+                            child: Text(
+                              _items[index].Name,
+                              textAlign: TextAlign.left,
                               overflow: TextOverflow.ellipsis,
-                            )),
-                            Flexible(
-                                child: Text(
-                              _items[index].Operaattor,
-                              overflow: TextOverflow.ellipsis,
-                            )),
-                            SizedBox(
-                              width: 5,
                             ),
-                          ],
-                        ),
+                          )),
+                          Flexible(
+                              child: Container(
+                            width: 60,
+                            child: Text(
+                              _items[index].Adress,
+                              textAlign: TextAlign.end,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          )),
+                          Flexible(
+                              child: Text(
+                            _items[index].Kapasiteet,
+                            overflow: TextOverflow.ellipsis,
+                          )),
+                          Flexible(
+                              child: Text(
+                            _items[index].Operaattor,
+                            overflow: TextOverflow.ellipsis,
+                          )),
+                          SizedBox(
+                            width: 5,
+                          ),
+                        ],
                       ),
-                      Divider(
-                        height: 5,
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                    ],
-                  );
-                } else {
-                  return _buildProgressIndicator();
-                }
+                    ),
+                    Divider(
+                      height: 5,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                  ],
+                );
               },
             ),
           ),
