@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hsl_frontend_app/journey_scroll_controller.dart';
 import 'package:hsl_frontend_app/station_scroll_controller.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const MyApp());
@@ -49,23 +50,43 @@ class _MyHomePageState extends State<MyHomePage> {
         ));
   }
 
+  fetchJourneyList() async {
+    final response = await http.get(Uri.parse('http://192.168.31.109:8080'));
+    setState(() {
+      loading = false;
+    });
+    print(response.statusCode);
+
+    // return compute(parseJourneyList, response.body);
+  }
+
+  bool loading = true;
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    fetchJourneyList();
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: TextButton(
-            child: Text('ok'),
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => StationScrollScreen(),
-                  ));
-            }),
-      ),
+      body: loading
+          ? CircularProgressIndicator()
+          : Center(
+              child: TextButton(
+                  child: Text('ok'),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => StationScrollScreen(),
+                        ));
+                  }),
+            ),
       floatingActionButton: FloatingActionButton(
         onPressed: buttonPress,
         tooltip: 'Increment',
