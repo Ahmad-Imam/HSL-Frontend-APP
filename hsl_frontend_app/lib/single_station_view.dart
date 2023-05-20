@@ -2,7 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hsl_frontend_app/FilterJourney.dart';
 import 'package:hsl_frontend_app/StationList.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class StationSingleView extends StatefulWidget {
   const StationSingleView({required this.station});
@@ -18,6 +21,41 @@ class _StationSingleViewState extends State<StationSingleView> {
   String lat = "0";
   String lng = "0";
 
+  String avgDeparture = '';
+  String avgReturn = '';
+  int totalDeparture = 0;
+  int totalReturn = 0;
+
+  Future<void> _loadData() async {
+    final url = Uri.parse('http://192.168.31.109:8080/FilterJourney');
+    final headers = {'Content-Type': 'application/json'};
+    final body = json.encode({"nimi": widget.station.Nimi});
+
+    final response = await http.post(url, headers: headers, body: body);
+    if (response.statusCode == 200) {
+      final apiResponse = FilterJourney.fromJson(json.decode(response.body));
+      setState(() {
+        avgDeparture = apiResponse.avgDeparture;
+        avgReturn = apiResponse.avgReturn;
+        totalDeparture = apiResponse.totalDeparture;
+        totalReturn = apiResponse.totalReturn;
+      });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(
+            'Error fetching data from API with response code ${response.statusCode}Exit to return to previous page'),
+        duration: const Duration(seconds: 5),
+        action: SnackBarAction(
+          label: 'Exit',
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ));
+      // Handle API error
+    }
+  }
+
   @override
   void initState() {
     if (double.tryParse(widget.station.y) != null ||
@@ -27,7 +65,7 @@ class _StationSingleViewState extends State<StationSingleView> {
         lng = widget.station.x;
       });
     }
-
+    _loadData();
     super.initState();
   }
 
@@ -117,31 +155,41 @@ class _StationSingleViewState extends State<StationSingleView> {
               ),
               ListTile(
                 title: const Text(
-                  "Location: ",
+                  "Average Return Distance: ",
                   style: TextStyle(fontWeight: FontWeight.w700),
                 ),
                 trailing: Text(
-                  widget.station.x + " - " + widget.station.y,
+                  avgReturn,
                   style: const TextStyle(fontWeight: FontWeight.w700),
                 ),
               ),
               ListTile(
                 title: const Text(
-                  "Kaupunki: ",
+                  "Average Departure Distance: ",
                   style: TextStyle(fontWeight: FontWeight.w700),
                 ),
                 trailing: Text(
-                  widget.station.Kaupunki,
+                  avgDeparture,
                   style: const TextStyle(fontWeight: FontWeight.w700),
                 ),
               ),
               ListTile(
                 title: const Text(
-                  "Stad: ",
+                  "Total Return Trips Number: ",
                   style: TextStyle(fontWeight: FontWeight.w700),
                 ),
                 trailing: Text(
-                  widget.station.Stad,
+                  '$totalReturn',
+                  style: const TextStyle(fontWeight: FontWeight.w700),
+                ),
+              ),
+              ListTile(
+                title: const Text(
+                  "Total Departure Trips Number: ",
+                  style: TextStyle(fontWeight: FontWeight.w700),
+                ),
+                trailing: Text(
+                  '$totalDeparture',
                   style: const TextStyle(fontWeight: FontWeight.w700),
                 ),
               ),

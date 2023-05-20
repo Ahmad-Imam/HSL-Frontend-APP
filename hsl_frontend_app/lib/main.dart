@@ -54,12 +54,24 @@ class _MyHomePageState extends State<MyHomePage> {
 
   fetchJourneyList() async {
     final response = await http.get(Uri.parse('http://192.168.31.109:8080'));
-    setState(() {
-      loading = false;
-    });
+    if (response.statusCode == 200) {
+      setState(() {
+        loading = false;
+      });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(
+            'Error fetching data from API with response code ${response.statusCode}Exit to return to previous page'),
+        duration: const Duration(seconds: 5),
+        action: SnackBarAction(
+          label: 'Exit',
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ));
+    }
     print(response.statusCode);
-
-    // return compute(parseJourneyList, response.body);
   }
 
   bool loading = true;

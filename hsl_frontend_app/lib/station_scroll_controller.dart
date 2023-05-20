@@ -48,6 +48,17 @@ class _StationScrollScreenState extends State<StationScrollScreen> {
         });
       } else {
         // Handle API error
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(
+              'Error fetching data from API with response code ${response.statusCode}Exit to return to previous page'),
+          duration: const Duration(seconds: 5),
+          action: SnackBarAction(
+            label: 'Exit',
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ));
       }
     }
   }
