@@ -27,7 +27,7 @@ class _StationSingleViewState extends State<StationSingleView> {
   int totalReturn = 0;
 
   Future<void> _loadData() async {
-    final url = Uri.parse('http://192.168.31.109:8080/FilterJourney');
+    final url = Uri.parse('http://hsl-backend-app.herokuapp.com/FilterJourney');
     final headers = {'Content-Type': 'application/json'};
     final body = json.encode({"nimi": widget.station.Nimi});
 

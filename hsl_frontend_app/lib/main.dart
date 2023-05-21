@@ -53,7 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   fetchJourneyList() async {
-    final response = await http.get(Uri.parse('http://192.168.31.109:8080'));
+    final response =
+        await http.get(Uri.parse('http://hsl-backend-app.herokuapp.com/'));
     if (response.statusCode == 200) {
       setState(() {
         loading = false;

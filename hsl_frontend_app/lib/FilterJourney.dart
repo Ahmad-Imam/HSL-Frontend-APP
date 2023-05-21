@@ -13,8 +13,8 @@ class FilterJourney {
   FilterJourney.fromJson(Map<String, dynamic> json) {
     totalReturn = json['totalReturn'];
     totalDeparture = json['totalDeparture'];
-    avgReturn = json['avgReturn'];
-    avgDeparture = json['avgDeparture'];
+    avgReturn = json['avgReturn'].toString();
+    avgDeparture = json['avgDeparture'].toString();
   }
 
   Map<String, dynamic> toJson() {

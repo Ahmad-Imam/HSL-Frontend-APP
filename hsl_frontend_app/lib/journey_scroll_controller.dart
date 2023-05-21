@@ -40,7 +40,8 @@ class _JourneyScrollScreenState extends State<JourneyScrollScreen> {
         _isLoading = true;
       });
 
-      final url = Uri.parse('http://192.168.31.109:8080/JourneyListByPage');
+      final url =
+          Uri.parse('http://hsl-backend-app.herokuapp.com/JourneyListByPage');
       final headers = {'Content-Type': 'application/json'};
       final body = json.encode({'pageNumber': _pageNumber});
 

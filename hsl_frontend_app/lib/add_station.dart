@@ -30,7 +30,7 @@ class _AddStationState extends State<AddStation> {
   }
 
   Future<http.Response> postRequest() async {
-    var url = 'http://192.168.31.109:8080/NewStation';
+    var url = 'http://hsl-backend-app.herokuapp.com/NewStation';
 
     Map data = {
       'fid': fidTextEditingController.text,

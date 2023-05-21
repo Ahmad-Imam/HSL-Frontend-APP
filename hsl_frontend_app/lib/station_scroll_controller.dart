@@ -34,7 +34,7 @@ class _StationScrollScreenState extends State<StationScrollScreen> {
         _isLoading = true;
       });
 
-      final url = Uri.parse('http://192.168.31.109:8080/StationList');
+      final url = Uri.parse('http://hsl-backend-app.herokuapp.com/StationList');
       final headers = {'Content-Type': 'application/json'};
       final body = json.encode({'pageNumber': _pageNumber});
 

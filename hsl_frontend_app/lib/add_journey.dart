@@ -25,7 +25,7 @@ class _AddJourneyState extends State<AddJourney> {
   }
 
   Future<http.Response> postRequest() async {
-    var url = 'http://192.168.31.109:8080/NewJourney';
+    var url = 'http://hsl-backend-app.herokuapp.com/NewJourney';
 
     Map data = {
       'departureDate': departureDateTextEditingController.text,
