@@ -47,17 +47,23 @@ samples, guidance on mobile development, and a full API reference.
 ![stationlist](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/2ab7bc04-9686-402f-91f4-29fe637aeff7)
 ![createjourney](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/7ea713f0-ae69-41bf-a622-644e95ef9562)
 
-## Application Information
+## Project Information
+
+The application is based on the instruction given in [exercise github](https://github.com/solita/dev-academy-2023-exercise). The main idea is to create a UI and a backend service for displaying data from journeys made with city bikes in the Helsinki Capital area based on the dataset given as a csv file.
 
 The application consists of a separate frontend and backend repository.
 
-- Technology: Frontend: Flutter, Backend: NodeJS, Docker, Heroku
+- Technology:
+
+  - Frontend: Flutter (Mobile Application)
+
+  - Backend: NodeJS, Docker, Heroku
 
 - The frontend is designed as a mobile application and contains an apk in the repository to install. Unfortunately it is not possible to run the application in ios device as I do not have access to an iphone but incase of ios it will use the same codebase by using the power of cross-platform development in flutter.
 
-- The backend is written in NodeJs and it needs the installation of npm and node to run the backend. The backend is containerized and it is also hosted in Heroku.
+- The backend is written in NodeJs and it needs the installation of npm and node to run the backend. The backend is containerized with docker and it is also hosted in Heroku.
 
-## Application Features
+## Project Features
 
 - Users can view all the journey information from the first dataset given in the exercise github. Scroll to bottom to see more journeys as they are loaded.
 
