@@ -13,7 +13,7 @@ class StationScrollScreen extends StatefulWidget {
 class _StationScrollScreenState extends State<StationScrollScreen> {
   ScrollController _scrollController = ScrollController();
   int _pageNumber = 1;
-  bool _isLoading = false;
+
   List<FinalStationList> _items = [];
 
   @override
@@ -29,37 +29,30 @@ class _StationScrollScreenState extends State<StationScrollScreen> {
   }
 
   Future<void> _loadData() async {
-    if (!_isLoading) {
+    final url = Uri.parse('http://hsl-backend-app.herokuapp.com/StationList');
+    final headers = {'Content-Type': 'application/json'};
+    final body = json.encode({'pageNumber': _pageNumber});
+
+    final response = await http.get(url, headers: headers);
+    if (response.statusCode == 200) {
+      final apiResponse = StationList.fromJson(json.decode(response.body));
       setState(() {
-        _isLoading = true;
+        _items.addAll(apiResponse.finalStationList);
+        _pageNumber++;
       });
-
-      final url = Uri.parse('http://hsl-backend-app.herokuapp.com/StationList');
-      final headers = {'Content-Type': 'application/json'};
-      final body = json.encode({'pageNumber': _pageNumber});
-
-      final response = await http.get(url, headers: headers);
-      if (response.statusCode == 200) {
-        final apiResponse = StationList.fromJson(json.decode(response.body));
-        setState(() {
-          _items.addAll(apiResponse.finalStationList);
-          _pageNumber++;
-          _isLoading = false;
-        });
-      } else {
-        // Handle API error
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(
-              'Error fetching data from API with response code ${response.statusCode}Exit to return to previous page'),
-          duration: const Duration(seconds: 5),
-          action: SnackBarAction(
-            label: 'Exit',
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ));
-      }
+    } else {
+      // Handle API error
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(
+            'Error fetching data from API with response code ${response.statusCode}Exit to return to previous page'),
+        duration: const Duration(seconds: 5),
+        action: SnackBarAction(
+          label: 'Exit',
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ));
     }
   }
 

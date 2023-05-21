@@ -81,8 +81,6 @@ class _StationSingleViewState extends State<StationSingleView> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 228, 246, 255),
       body: ListView(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           double.parse(lat) == 0 || double.parse(lng) == 0
               ? Column(
@@ -193,59 +191,10 @@ class _StationSingleViewState extends State<StationSingleView> {
                   style: const TextStyle(fontWeight: FontWeight.w700),
                 ),
               ),
-              // ListTile(
-              //   title: const Text(
-              //     "Total Departure: ",
-              //     style: TextStyle(fontWeight: FontWeight.w700),
-              //   ),
-              //   trailing: Text(
-              //     "${widget.totalDeparture}",
-              //     style: const TextStyle(fontWeight: FontWeight.w700),
-              //   ),
-              // ),
-              // ListTile(
-              //   title: const Text(
-              //     "Total Return: ",
-              //     style: TextStyle(fontWeight: FontWeight.w700),
-              //   ),
-              //   trailing: Text(
-              //     "${widget.totalReturn}",
-              //     style: const TextStyle(fontWeight: FontWeight.w700),
-              //   ),
-              // ),
-              // ListTile(
-              //   title: const Text(
-              //     "Average Distance of Departures: ",
-              //     style: TextStyle(fontWeight: FontWeight.w700),
-              //   ),
-              //   trailing: Text(
-              //     calculateAvgDeparture(widget.station) as String,
-              //     style: const TextStyle(fontWeight: FontWeight.w700),
-              //   ),
-              // ),
-              // ListTile(
-              //   title: const Text(
-              //     "Average Distance of Returns: ",
-              //     style: TextStyle(
-              //       fontWeight: FontWeight.w700,
-              //     ),
-              //   ),
-              //   trailing: Text(
-              //     calculateAvgReturn(widget.station) as String,
-              //     style: const TextStyle(
-              //       fontWeight: FontWeight.w700,
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ],
       ),
-      // floatingActionButton: FloatingActionButton.extended(
-      //   onPressed: _goToTheLake,
-      //   label: const Text('To the lake!'),
-      //   icon: const Icon(Icons.directions_boat),
-      // ),
     );
   }
 }

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'HSL Home Page'),
     );
   }
 }
@@ -44,14 +44,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void buttonPress() {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => JourneyScrollScreen(),
-        ));
-  }
-
   fetchJourneyList() async {
     final response =
         await http.get(Uri.parse('http://hsl-backend-app.herokuapp.com/'));
@@ -88,9 +80,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        centerTitle: true,
       ),
       body: loading
-          ? CircularProgressIndicator()
+          ? Center(child: CircularProgressIndicator())
           : Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -134,11 +127,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: buttonPress,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
     );
   }
 }

@@ -11,7 +11,7 @@ class JourneyScrollScreen extends StatefulWidget {
 class _JourneyScrollScreenState extends State<JourneyScrollScreen> {
   ScrollController _scrollController = ScrollController();
   int _pageNumber = 1;
-  bool _isLoading = false;
+
   List<FinalJourneyList> journeyItems = [];
 
   @override
@@ -35,39 +35,32 @@ class _JourneyScrollScreenState extends State<JourneyScrollScreen> {
   }
 
   Future<void> _loadData() async {
-    if (!_isLoading) {
+    final url =
+        Uri.parse('http://hsl-backend-app.herokuapp.com/JourneyListByPage');
+    final headers = {'Content-Type': 'application/json'};
+    final body = json.encode({'pageNumber': _pageNumber});
+
+    final response = await http.post(url, headers: headers, body: body);
+    if (response.statusCode == 200) {
+      final apiResponse =
+          AutoGenerateJourney.fromJson(json.decode(response.body));
       setState(() {
-        _isLoading = true;
+        journeyItems.addAll(apiResponse.finalJourneyList);
+        _pageNumber++;
       });
-
-      final url =
-          Uri.parse('http://hsl-backend-app.herokuapp.com/JourneyListByPage');
-      final headers = {'Content-Type': 'application/json'};
-      final body = json.encode({'pageNumber': _pageNumber});
-
-      final response = await http.post(url, headers: headers, body: body);
-      if (response.statusCode == 200) {
-        final apiResponse =
-            AutoGenerateJourney.fromJson(json.decode(response.body));
-        setState(() {
-          journeyItems.addAll(apiResponse.finalJourneyList);
-          _pageNumber++;
-          _isLoading = false;
-        });
-      } else {
-        // Handle API error
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(
-              'Error fetching data from API with response code ${response.statusCode}Exit to return to previous page'),
-          duration: const Duration(seconds: 5),
-          action: SnackBarAction(
-            label: 'Exit',
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ));
-      }
+    } else {
+      // Handle API error
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(
+            'Error fetching data from API with response code ${response.statusCode}Exit to return to previous page'),
+        duration: const Duration(seconds: 5),
+        action: SnackBarAction(
+          label: 'Exit',
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ));
     }
   }
 
