@@ -40,21 +40,12 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Sample Screenshots
 
-| <img src="https://user-images.githubusercontent.com/38004971/210276448-1ab43bfe-ce22-48c4-89a0-59e5833d4541.jpg" width=30% height=30%> |
-| :------------------------------------------------------------------------------------------------------------------------------------: |
-|                                                          _IP ADDRESS SCREEN_                                                           |
-
-| <img src="https://user-images.githubusercontent.com/38004971/210276530-0ee31162-7a4b-41c0-884f-9fb0e4305e84.jpg" width=30% height=30%> |
-| :------------------------------------------------------------------------------------------------------------------------------------: |
-|                                                             _HOME SCREEN_                                                              |
-
-| <img src="https://user-images.githubusercontent.com/38004971/210276539-66fb20c7-e8e6-4636-b9f9-6f4e821dd9fb.jpg" width=30% height=30%> |
-| :------------------------------------------------------------------------------------------------------------------------------------: |
-|                                                         _STATION LIST SCREEN_                                                          |
-
-| <img src="https://user-images.githubusercontent.com/38004971/210276542-84b6552f-8cca-4d2d-b11a-95e399432fad.jpg" width=30% height=30%> |
-| :------------------------------------------------------------------------------------------------------------------------------------: |
-|                                                          _ADD STATION SCREEN_                                                          |
+![createjourney](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/7ea713f0-ae69-41bf-a622-644e95ef9562)
+![home](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/563f9bae-a0ba-4f4b-a2b8-9e207066ea61)
+![journeylist](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/a6066347-0a37-4366-824c-86d4013e1c4e)
+![singlestation](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/13142419-d611-45d2-8f6c-c1473a919a87)
+![station](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/6d7de069-5955-4cc7-93cd-b9687f390863)
+![stationlist](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/2ab7bc04-9686-402f-91f4-29fe637aeff7)
 
 ## Application Information
 
