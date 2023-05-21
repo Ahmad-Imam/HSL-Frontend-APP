@@ -40,12 +40,26 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Sample Screenshots
 
-![home](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/563f9bae-a0ba-4f4b-a2b8-9e207066ea61)
-![journeylist](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/a6066347-0a37-4366-824c-86d4013e1c4e)
-![singlestation](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/13142419-d611-45d2-8f6c-c1473a919a87)
-![station](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/6d7de069-5955-4cc7-93cd-b9687f390863)
-![stationlist](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/2ab7bc04-9686-402f-91f4-29fe637aeff7)
-![createjourney](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/7ea713f0-ae69-41bf-a622-644e95ef9562)
+|  <img src="https://user-images.githubusercontent.com/38004971/239768549-b00970e0-2ebd-430d-9ff0-3d48d4d0f764.jpg" width=30% height=30%> |
+|:--:|
+| *HOME SCREEN* |
+ 
+|  <img src="https://user-images.githubusercontent.com/38004971/239768550-7d4e0bb6-0d3d-4b33-b289-d30f116523cd.jpg" width=30% height=30%> |
+|:--:|
+| *JOURNEY LIST SCREEN* |
+ 
+| <img src="https://user-images.githubusercontent.com/38004971/239768553-7af6e86c-bcc1-47d6-8426-e9f0f806e150.jpg" width=30% height=30%> |
+|:--:|
+| *STATION LIST SCREEN* |
+ 
+|  <img src="https://user-images.githubusercontent.com/38004971/239768551-c962268b-518c-4836-b78c-1459b611d7ed.jpg" width=30% height=30%> |
+|:--:|
+| *STATION DETAILS SCREEN* |
+
+|  <img src="https://user-images.githubusercontent.com/38004971/239768552-41513e6d-6948-4cee-835e-9433bd806d36.jpg" width=30% height=30%> |
+|:--:|
+| *ADD STATION SCREEN* |
+
 
 ## Project Information
 
