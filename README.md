@@ -1,12 +1,12 @@
-# HSL-Frontend
+# HSL-Frontend-APP
 
 ## Welcome to HSl Frontend Application.
 
-Backend: [Backend Repository](https://github.com/Ahmad-Imam/HSL-Backend)
+Backend: [Backend Repository](https://github.com/Ahmad-Imam/HSL-Backend-APP)
 
 ## Frontend Information
 
-The project uses Flutter and is developed as a mobile application. You can run the frontend on android device by installing flutter and dart on your local machine and run the main file. Or you can directly install the hsl_frontend apk on your android device.
+The project uses Flutter and is developed as a mobile application. You can directly install the hsl_frontend apk on your android device or you can run the frontend on android device by installing flutter and dart on your local machine and run the main file.
 
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
@@ -40,12 +40,12 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Sample Screenshots
 
-![createjourney](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/7ea713f0-ae69-41bf-a622-644e95ef9562)
 ![home](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/563f9bae-a0ba-4f4b-a2b8-9e207066ea61)
 ![journeylist](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/a6066347-0a37-4366-824c-86d4013e1c4e)
 ![singlestation](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/13142419-d611-45d2-8f6c-c1473a919a87)
 ![station](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/6d7de069-5955-4cc7-93cd-b9687f390863)
 ![stationlist](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/2ab7bc04-9686-402f-91f4-29fe637aeff7)
+![createjourney](https://github.com/Ahmad-Imam/HSL-Backend-APP/assets/38004971/7ea713f0-ae69-41bf-a622-644e95ef9562)
 
 ## Application Information
 
